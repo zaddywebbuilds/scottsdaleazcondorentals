@@ -108,6 +108,59 @@ ever scaled up and nothing blurs. Verified: maximum render-to-native ratio acros
 22 photographs is **1.00**. The small originals are presented as mounted prints
 (centred, thin outline, soft shadow) rather than stretched to fill their container.
 
+## Guest reviews — real, and there is only one
+
+The reviews section now shows the company's **actual Google review**, quoted verbatim and
+attributed. The six placeholder testimonials that were previously here have been deleted.
+
+**Scottsdale Condominium Rentals has exactly one Google review**: 5.0 stars from Jeri
+Kelley, posted three months before this build. That is the whole review corpus, so the
+section is built around one strong review rather than padded out.
+
+`AggregateRating` structured data reflects the true numbers — `ratingValue 5.0`,
+`reviewCount 1`. Do not inflate these: Google penalises false review markup, and the
+figure must match what is publicly verifiable on the Business Profile.
+
+**Highest-value marketing action available:** ask past guests for reviews. Review volume
+is one of the strongest local-search ranking signals, and going from 1 to 15 reviews would
+do more for this business than any further design work. There is a "Write a review" button
+wired into the section.
+
+### One thing to confirm
+
+The review names **Mark** ("Mark was so awesome to work with"). That is presumably the
+principal, but it is not stated anywhere on the existing site, so it has deliberately
+**not** been added to the host section. Confirm who Mark is and the About copy can name
+him — a named, licensed local agent converts far better than an anonymous one.
+
+## Community pages
+
+Each community now has its own indexable page under `/communities/`, so searches like
+"Kierland Greens rental" or "Troon North furnished home" can land directly on the right
+page instead of the homepage.
+
+| Page | Covers |
+| --- | --- |
+| `kierland-greens.html` | Kierland Greens Villas, 15221 N. Clubgate Dr. |
+| `grayhawk.html` | Vintage at Grayhawk |
+| `troon-north.html` | Troon North homes and golf casitas |
+| `plaza-residences.html` | Plaza Residences, Old Town |
+| `montana-del-sol.html` | Montana del Sol, Villa Antigua, Montage, Villages North |
+| `private-homes.html` | Private furnished homes across the Valley |
+
+Each carries a unique title and meta description, its own canonical URL, `Accommodation`
+and `BreadcrumbList` structured data, unit configurations, amenities, terms, and
+cross-links to the other five. All six are linked from the portfolio tabs on the homepage
+and listed in `sitemap.xml`.
+
+**To edit or add a community:** update `.props.json`, then run
+
+```bash
+pwsh -File build-communities.ps1
+```
+
+That regenerates all six pages and rewrites `sitemap.xml`.
+
 ## WhatsApp — built, currently switched off
 
 WhatsApp contact is fully implemented and **disabled by default**. When enabled it adds

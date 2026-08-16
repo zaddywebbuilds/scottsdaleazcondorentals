@@ -575,6 +575,66 @@ em{font-style:italic;color:var(--rose)}
 .rev-w b{display:block;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
 .rev-w span{font-size:.68rem;color:var(--txt-lt);display:block;margin-top:.18rem}
 
+/* ---------- community detail pages ---------- */
+.crumb{font-size:.7rem;letter-spacing:.09em;color:var(--txt-lt);text-transform:uppercase;font-weight:600}
+.crumb a{color:var(--rose-dk)}
+.crumb a:hover{text-decoration:underline}
+.prop-addr{
+  margin-top:1rem;font-size:.86rem;font-weight:600;color:var(--rose-dk);
+  background:var(--blush);display:inline-block;padding:.55rem .95rem;border-radius:100px;
+}
+.other-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.oc{
+  background:var(--white);border:1px solid var(--blush2);border-radius:var(--r-lg);
+  padding:1rem .95rem;transition:.35s var(--ease);display:block;
+}
+.oc:hover{border-color:var(--rose);transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(176,138,87,.6)}
+.oc span{font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);font-weight:700;display:block}
+.oc b{display:block;font-family:var(--ff-d);font-size:1.1rem;font-weight:400;margin-top:.3rem;line-height:1.15}
+@media(max-width:1024px){.other-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.other-grid{grid-template-columns:1fr}}
+
+/* "full details" link inside the portfolio tabs */
+.panel-more{
+  display:inline-flex;align-items:center;gap:.45rem;margin-top:1.1rem;
+  font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  color:var(--rose-dk);border-bottom:1.5px solid currentColor;padding-bottom:.2rem;
+  transition:gap .3s;
+}
+.panel-more:hover{gap:.8rem}
+.dark .panel-more{color:var(--pink)}
+
+/* ---------- Google review block ---------- */
+.gr-wrap{
+  display:grid;grid-template-columns:.42fr 1fr;gap:1.1rem;align-items:stretch;
+  max-width:1000px;margin-inline:auto;
+}
+.gr-score{
+  background:var(--white);border:1px solid var(--blush2);border-radius:var(--r-lg);
+  padding:1.6rem 1.3rem;text-align:center;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.35rem;
+}
+.gr-score b{font-family:var(--ff-d);font-size:3.4rem;line-height:1;color:var(--rose-dk);font-weight:400}
+.gr-stars{color:var(--rose);letter-spacing:.18em;font-size:1rem}
+.gr-score span{font-size:.7rem;color:var(--txt-mid);line-height:1.4}
+.gr-score .btn{margin-top:.8rem;padding:.7rem 1.2rem;font-size:.6rem}
+.gr-review{
+  background:var(--white);border:1px solid var(--blush2);border-radius:var(--r-lg);
+  padding:1.8rem 1.7rem;display:flex;flex-direction:column;justify-content:center;
+  border-left:3px solid var(--rose);
+}
+.gr-review .stars{color:var(--rose);letter-spacing:.16em;margin-bottom:.9rem;font-size:.9rem}
+.gr-review q{
+  font-family:var(--ff-d);font-size:clamp(1.1rem,1.9vw,1.42rem);line-height:1.5;
+  font-style:italic;quotes:none;color:var(--txt);
+}
+.gr-note{
+  text-align:center;margin-top:1.2rem;font-size:.82rem;color:var(--txt-mid);
+  max-width:64ch;margin-inline:auto;line-height:1.6;
+}
+.gr-note a{color:var(--rose-dk);border-bottom:1px solid currentColor}
+@media(max-width:760px){ .gr-wrap{grid-template-columns:1fr} }
+
 /* ==========================================================================
    Map
    ========================================================================== */

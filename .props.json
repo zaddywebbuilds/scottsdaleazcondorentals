@@ -1,0 +1,68 @@
+[
+{
+  "slug":"kierland-greens","name":"Kierland Greens Villas","area":"North Scottsdale · Kierland",
+  "img":"prop-kierland.jpg","ph":"ph-collage","imgAlt":"Photographs of the Kierland Greens condominium community",
+  "addr":"15221 N. Clubgate Dr., Scottsdale, AZ 85254",
+  "lede":"A carefree lifestyle along the 9th hole of the Kierland Golf Course, minutes from Kierland Commons. Gated entry provides privacy and security so you can fully enjoy the sparkling pool, spa and fitness center.",
+  "units":["1 Bed / 1.5 Bath","2 Bed / 2 Bath","3 Bed / 2 Bath"],
+  "facts":["Gated community with private entry","Two floors","Heated community pool and jacuzzi","Community exercise room and spa","Along the 9th hole of Kierland Golf Course","Walk to Kierland Commons shopping"],
+  "policy":["30 day minimum stay","No pets","No smoking"],
+  "title":"Kierland Greens Villas | Furnished Condo Rentals, North Scottsdale AZ",
+  "desc":"Furnished 1, 2 and 3 bedroom condominium rentals at Kierland Greens Villas, 15221 N. Clubgate Dr., Scottsdale AZ. Gated, with heated pool, spa and fitness center on the Kierland Golf Course. 30 day minimum stay."
+},
+{
+  "slug":"grayhawk","name":"Vintage at Grayhawk","area":"North Scottsdale · Grayhawk",
+  "img":"prop-grayhawk.jpg","ph":"ph-band","imgAlt":"Aerial view of a resort pool at a North Scottsdale golf community",
+  "addr":"Grayhawk, North Scottsdale, AZ",
+  "lede":"Condominiums and private homes within the celebrated Grayhawk master community — surrounded by two championship courses and a short drive from the Scottsdale Quarter and the Loop 101.",
+  "units":["Grayhawk #1080 — 3 Bed / 2 Bath","Grayhawk Home — sleeps 8 to 10","Greyhawk at the Encore Development"],
+  "facts":["Adjacent to Grayhawk Golf Club","Heated pool, spa and fitness facilities","Close to Scottsdale Quarter","Easy access to the Loop 101","Gated community"],
+  "policy":["Minimum stay varies by unit","Call for the current pet policy"],
+  "title":"Vintage at Grayhawk | Furnished Rentals, North Scottsdale AZ",
+  "desc":"Furnished condominium and home rentals at Vintage at Grayhawk, North Scottsdale. Adjacent to Grayhawk Golf Club with heated pool, spa and fitness facilities. Homes sleeping 8 to 10 guests."
+},
+{
+  "slug":"troon-north","name":"Troon North","area":"North Scottsdale · Troon",
+  "img":"prop-troon.jpg","ph":"ph-band","imgAlt":"Desert residence among boulders and saguaro at dusk",
+  "addr":"Troon North, Scottsdale, AZ",
+  "lede":"Set among granite boulders and saguaro at the foot of Pinnacle Peak — the most dramatic desert setting in the portfolio, and one of the finest golf addresses in the United States.",
+  "units":["Troon Home — 3 Bed, 3 Bath + office","Troon North Golf Casita — sleeps 6 to 8","Coyote Canyon — sleeps 8 to 10"],
+  "facts":["Boulder-set architecture with mountain views","Pinnacle Peak trailhead nearby","Toms Thumb trailhead nearby","Troon North Golf Club","Quiet, low-density desert setting"],
+  "policy":["Minimum stay varies by residence","Call for the current pet policy"],
+  "title":"Troon North | Furnished Home and Casita Rentals, Scottsdale AZ",
+  "desc":"Furnished home and golf casita rentals at Troon North, Scottsdale. Boulder-set desert architecture at the foot of Pinnacle Peak, sleeping 6 to 10 guests."
+},
+{
+  "slug":"plaza-residences","name":"Plaza Residences","area":"Old Town Scottsdale",
+  "img":"prop-plaza.jpg","ph":"ph-band","imgAlt":"Cream-coloured building courtyard lit with string lights at dusk",
+  "addr":"Old Town Scottsdale, AZ",
+  "lede":"Walkable Old Town living — galleries, restaurants, the Arizona Canal and Scottsdale Fashion Square at your doorstep. Ideal for shorter corporate assignments in the heart of the city.",
+  "units":["Unit 1054 — 1 Bed / 1 Bath","Unit 1125 — 1 Bed / 1 Bath","Unit 2054 — 1 Bed / 1 Bath","Unit 2055 — 1 Bed / 1 Bath"],
+  "facts":["Walk to Old Town dining and galleries","Secure building","Covered parking","Scottsdale Fashion Square nearby","On the Arizona Canal path"],
+  "policy":["Minimum stay varies by unit","Call for the current pet policy"],
+  "title":"Plaza Residences | Furnished 1 Bedroom Rentals, Old Town Scottsdale",
+  "desc":"Furnished one bedroom condominium rentals at Plaza Residences in Old Town Scottsdale. Walk to Fashion Square, galleries and dining. Secure building with covered parking."
+},
+{
+  "slug":"montana-del-sol","name":"Montana del Sol and more","area":"Scottsdale and Phoenix",
+  "img":"prop-montana.jpg","ph":"ph-thumb","imgAlt":"Community pool with cabana and condominium buildings",
+  "addr":"Scottsdale and Phoenix, AZ",
+  "lede":"Comfortable two-bedroom condominiums across several established Valley communities — our most requested configuration for relocating families and extended corporate stays.",
+  "units":["Montana del Sol #112 — 2 Bed / 2 Bath","Montana del Sol #202 — 2 Bed / 2 Bath","Villa Antigua — 2 Bed / 2 Bath","Montage #1131 — 2 Bed / 2 Bath","Villages North — 2 Bed / 2 Bath"],
+  "facts":["The Groves Condominium #2009","Villa Rita","The Overlook","Community pools and spas","Established, quiet Valley neighbourhoods"],
+  "policy":["Minimum stay varies by community","Call for the current pet policy"],
+  "title":"Montana del Sol and Valley Condos | Furnished 2 Bedroom Rentals, Scottsdale AZ",
+  "desc":"Furnished two bedroom condominium rentals at Montana del Sol, Villa Antigua, Montage, Villages North and more across Scottsdale and Phoenix."
+},
+{
+  "slug":"private-homes","name":"Private Furnished Homes","area":"Across the Valley",
+  "img":"prop-homes.jpg","ph":"ph-band","imgAlt":"Aerial view of a desert residential community in Arizona",
+  "addr":"Scottsdale, Paradise Valley, Cave Creek and Fountain Hills, AZ",
+  "lede":"For families and groups who need more room — privately owned homes with pools, garages and full yards, across Scottsdale, Paradise Valley, Cave Creek and Fountain Hills.",
+  "units":["North Scottsdale Home","High Desert Village","Signature at Scottsdale — 3 Bed / 2 Bath","Sunset Cove — 3 Bed / 2 Bath, facing the golf course"],
+  "facts":["Homes sleeping 8 to 10 guests","Private pools and garages","Full yards","Studio through 4 bedroom configurations","Multiple Valley locations"],
+  "policy":["Minimum stay varies by home","Call for the current pet policy"],
+  "title":"Private Furnished Homes | House Rentals in Scottsdale and Paradise Valley AZ",
+  "desc":"Privately owned furnished home rentals across Scottsdale, Paradise Valley, Cave Creek and Fountain Hills. Homes with pools and garages sleeping 8 to 10 guests."
+}
+]
