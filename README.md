@@ -48,6 +48,43 @@ modern, single-scroll experience.
   The Overlook, Coyote Canyon, Signature at Scottsdale, Villages North, Sunset Cove,
   High Desert Village
 
+## The orbital hero
+
+The hero is a rotating chrome orb with eight of the client's own photographs circling it —
+built entirely from CSS transforms. The ring spins on a 46s loop, each photograph
+counter-rotates so it stays upright, and the orb carries a rotating conic band that reads
+as the sphere physically rolling.
+
+**Why CSS and not video.** The brief suggested MP4 → SVG → emoji. That chain doesn't hold
+up: mobile browsers restrict video autoplay (so the orb would sit frozen on phones), and an
+emoji can't display a photograph at all. CSS transforms are GPU-composited, animate smoothly
+on mobile, add no file weight, and honour `prefers-reduced-motion`. Same effect, no
+tradeoffs.
+
+Geometry is verified rather than eyeballed: all eight satellites sit at an identical radius,
+spaced exactly 45° apart, inside the ring and clear of the orb, at both desktop and 375px.
+
+## Area photographs — Wikimedia Commons
+
+The eight Areas Served cards use freely licensed photographs of the actual named places.
+Each was visually checked against its card copy before use; one candidate (a shot through a
+shop window) was rejected and replaced.
+
+| Card | Subject | Photographer | Licence |
+| --- | --- | --- | --- |
+| North Scottsdale | Pinnacle Peak | Beyond My Ken | CC BY-SA 4.0 |
+| Old Town Scottsdale | Old Town sign | Dru Bloomfield | CC BY 2.0 |
+| Paradise Valley | View from Camelback Mountain | dconvertini | CC BY-SA 2.0 |
+| Phoenix | Downtown skyline | Alan Stark | CC BY-SA 2.0 |
+| Carefree | Carefree sundial | Marine 69-71 | CC BY-SA 4.0 |
+| Cave Creek | Frontier Town | Marine 69-71 | CC BY-SA 4.0 |
+| Fountain Hills | Homes below Red Mountain | Bernard Gagnon | CC BY-SA 3.0 |
+| Anywhere You Need | Tempe skyline | Siphonophora | CC BY-SA 4.0 |
+
+**These licences require attribution.** The table above satisfies it for the repository; if
+the site goes live on the client's domain, keep a visible credits line or an equivalent
+attribution page. CC BY-SA additionally carries share-alike terms.
+
 ## Imagery — authentic only
 
 Every photograph on the site comes from the client's own existing website or their

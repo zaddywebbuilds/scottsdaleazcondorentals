@@ -6,27 +6,32 @@
    ========================================================================== */
 
 :root{
-  --ink:#26101B;
-  --ink2:#351826;
-  --ink3:#4A2334;
+  /* warm champagne / chrome — taken from the reference interior */
+  --ink:#221F1B;
+  --ink2:#2E2A24;
+  --ink3:#453E34;
 
-  --rose:#D94F7A;
-  --rose-dk:#B33A61;
-  --pink:#F080A6;
-  --pink-lt:#F9B9CE;
-  --pink-pale:#FBD9E4;
+  --rose:#B08A57;        /* champagne bronze — primary accent */
+  --rose-dk:#8F6E40;
+  --pink:#DFBB84;        /* warm cove glow */
+  --pink-lt:#EBD4B0;
+  --pink-pale:#F2E3CB;
 
-  --blush:#FBE7EE;
-  --blush2:#F6D8E3;
-  --shell:#FFF6F9;
-  --white:#FFFDFE;
+  --blush:#F0E7D9;       /* warm sand panel */
+  --blush2:#E3D6C1;
+  --shell:#FAF5EC;       /* cream ground */
+  --white:#FFFCF6;
 
-  --clay:#E08A6B;
-  --sun:#F2B063;
+  --clay:#C08A62;
+  --sun:#E3B478;
 
-  --txt:#2A121F;
-  --txt-mid:#7A5566;
-  --txt-lt:#A98899;
+  --chrome:#AEB6BC;
+  --chrome-lt:#E4E9EC;
+  --chrome-dk:#767E85;
+
+  --txt:#26221C;
+  --txt-mid:#6D6354;
+  --txt-lt:#9B8F7C;
 
   --r:3px;
   --r-lg:2px;
@@ -137,6 +142,7 @@ em{font-style:italic;color:var(--rose)}
 .ph-collage{aspect-ratio:291/564;max-width:291px}
 .ph-map{aspect-ratio:229/229;max-width:229px}
 .ph-promo{aspect-ratio:238/168;max-width:238px}
+.ph-area{aspect-ratio:3/2;max-width:100%}   /* Wikimedia originals are 1600–1920px wide */
 
 /* small originals are presented as mounted prints rather than stretched fills */
 .card .ph,.zig .ph{
@@ -243,6 +249,108 @@ em{font-style:italic;color:var(--rose)}
 .hero-sub{font-size:clamp(.92rem,1.25vw,1.05rem);color:rgba(255,246,249,.7);max-width:48ch;margin-bottom:1.7rem;line-height:1.72}
 .hero-sub b{color:var(--pink);font-weight:600}
 .hero-btns{display:flex;flex-wrap:wrap;gap:.7rem}
+/* ==========================================================================
+   ORBIT — rotating chrome orb with the client's own photographs circling it.
+   Pure CSS transforms: GPU-composited, runs smoothly on mobile, no video.
+   ========================================================================== */
+.orbit{
+  --size:min(540px,86vw);
+  --r:calc(var(--size) * .40);   /* absolute radius — a % here would resolve
+                                    against the satellite, not the orbit */
+  position:relative;width:var(--size);aspect-ratio:1/1;margin-inline:auto;
+  display:grid;place-items:center;
+}
+/* soft cove glow behind everything, like the reference interior */
+.orbit::before{
+  content:"";position:absolute;inset:-6%;border-radius:50%;
+  background:radial-gradient(circle at 50% 42%,rgba(227,180,120,.28),transparent 62%);
+  filter:blur(14px);
+}
+/* the ring the photographs travel on */
+.orbit-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(223,187,132,.22);
+  animation:orbit-spin 46s linear infinite;
+}
+.orbit-ring::after{
+  content:"";position:absolute;inset:11%;border-radius:50%;
+  border:1px dashed rgba(223,187,132,.14);
+}
+.sat{
+  position:absolute;top:50%;left:50%;width:76px;height:76px;
+  transform:
+    translate(-50%,-50%)
+    rotate(calc(var(--i) * 45deg))
+    translateY(calc(var(--r) * -1))
+    rotate(calc(var(--i) * -45deg));
+}
+.sat-in{
+  width:100%;height:100%;border-radius:50%;overflow:hidden;
+  background:var(--ink2);
+  border:2px solid rgba(223,187,132,.5);
+  box-shadow:0 6px 20px -6px rgba(0,0,0,.65);
+  animation:orbit-spin-rev 46s linear infinite;   /* keeps photos upright */
+}
+.sat-in img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* the orb */
+.orb{
+  position:relative;width:47%;aspect-ratio:1/1;border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 28%,#F2F5F7 0%,#C8D0D6 16%,#9AA3AA 40%,#5D666D 70%,#333A40 100%);
+  box-shadow:
+    inset -10px -14px 32px rgba(0,0,0,.55),
+    inset 8px 10px 26px rgba(255,255,255,.34),
+    0 22px 50px -18px rgba(0,0,0,.6);
+  overflow:hidden;
+}
+/* rotating banding reads as the sphere physically rolling */
+.orb::before{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,
+    rgba(255,255,255,.30) 0deg, rgba(255,255,255,0) 42deg,
+    rgba(0,0,0,.24) 96deg, rgba(255,255,255,0) 150deg,
+    rgba(255,255,255,.24) 204deg, rgba(255,255,255,0) 258deg,
+    rgba(0,0,0,.22) 312deg, rgba(255,255,255,.30) 360deg);
+  mix-blend-mode:overlay;
+  animation:orb-roll 7s linear infinite;
+}
+/* fixed specular highlight so the sphere reads as lit from one side */
+.orb::after{
+  content:"";position:absolute;left:20%;top:14%;width:34%;height:24%;
+  border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.72),transparent 70%);
+  filter:blur(5px);
+}
+.orb-label{
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;z-index:3;
+  font-family:var(--ff-d);color:#fff;line-height:1.1;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);padding:1rem;
+}
+.orb-label b{display:block;font-size:clamp(1.5rem,3.6vw,2.3rem);font-weight:400}
+.orb-label span{
+  display:block;font-family:var(--ff-s);font-size:.55rem;letter-spacing:.24em;
+  text-transform:uppercase;font-weight:700;color:var(--pink-lt);margin-top:.4rem;
+}
+/* plinth glow under the orb, echoing the reference */
+.orbit-base{
+  position:absolute;bottom:4%;left:50%;transform:translateX(-50%);
+  width:52%;height:12px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(223,187,132,.5),transparent 70%);
+  filter:blur(6px);
+}
+
+@keyframes orbit-spin{to{transform:rotate(360deg)}}
+@keyframes orbit-spin-rev{to{transform:rotate(-360deg)}}
+@keyframes orb-roll{to{transform:rotate(360deg)}}
+
+@media(prefers-reduced-motion:reduce){
+  .orbit-ring,.sat-in,.orb::before{animation:none}
+}
+@media(max-width:680px){
+  .sat{width:54px;height:54px}
+  .orbit{--size:min(340px,88vw)}
+}
+
 .hero-photo{position:relative}
 .hero-photo .ph{aspect-ratio:4/3;background:var(--ink2);border-radius:var(--r-lg)}
 .hero-cap{
