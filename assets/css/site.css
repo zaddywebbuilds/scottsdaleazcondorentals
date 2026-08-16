@@ -198,8 +198,14 @@ em{font-style:italic;color:var(--rose)}
 /* ==========================================================================
    Nav
    ========================================================================== */
-.nav{position:sticky;top:0;z-index:1000;background:transparent;transition:.4s var(--ease);border-bottom:1px solid transparent}
-.nav.solid{background:rgba(38,16,27,.96);backdrop-filter:blur(16px);border-bottom-color:rgba(240,128,166,.2)}
+/* always solid — the hero beneath is light, so a transparent bar would
+   render the light nav text invisible */
+.nav{
+  position:sticky;top:0;z-index:1000;transition:.4s var(--ease);
+  background:rgba(34,31,27,.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(223,187,132,.22);
+}
+.nav.solid{box-shadow:0 8px 30px -14px rgba(0,0,0,.5)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:1.4rem}
 .brand{display:flex;flex-direction:column;line-height:1;flex:0 1 auto;min-width:0}
 .brand b{font-family:var(--ff-d);font-size:1.06rem;font-weight:500;color:var(--shell);letter-spacing:.03em;white-space:nowrap}
@@ -235,19 +241,42 @@ em{font-style:italic;color:var(--rose)}
 /* ==========================================================================
    HERO — image sits on the surface next to the text
    ========================================================================== */
-.hero{background:var(--ink);padding-top:clamp(2rem,4vw,3.4rem);padding-bottom:0;margin-top:calc(var(--nav-h) * -1)}
-.hero-in{padding-top:var(--nav-h);display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,3.5vw,3.2rem);align-items:center}
+/* warm beige room with an overhead cove glow, as in the reference interior */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 120% 62% at 50% -8%, rgba(255,246,232,.95) 0%, rgba(240,226,204,.75) 34%, transparent 70%),
+    linear-gradient(180deg, #E9DCC7 0%, #DCCDB4 44%, #CBB99C 100%);
+  padding-top:clamp(2rem,4vw,3.4rem);padding-bottom:0;margin-top:calc(var(--nav-h) * -1);
+}
+/* the cove light strip across the top */
+.hero::before{
+  content:"";position:absolute;left:50%;top:calc(var(--nav-h) - 6px);transform:translateX(-50%);
+  width:74%;height:22px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(255,236,205,.95),rgba(227,180,120,.35) 55%,transparent 75%);
+  filter:blur(10px);
+}
+/* concrete-toned floor band beneath, echoing the reference */
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:26%;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(120,110,96,.28));
+}
+.hero-in{position:relative;z-index:2;padding-top:var(--nav-h);display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,3.5vw,3.2rem);align-items:center}
 .hero-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem}
 .hero-badges span{
-  padding:.36rem .8rem;border:1px solid rgba(240,128,166,.4);border-radius:100px;
+  padding:.36rem .8rem;border:1px solid rgba(143,110,64,.4);border-radius:100px;
   font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
-  color:var(--pink-lt);background:rgba(240,128,166,.09);
+  color:var(--rose-dk);background:rgba(255,252,246,.6);
 }
-.hero-loc{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,246,249,.5);margin-bottom:1rem;font-weight:600}
-.hero h1{font-size:clamp(2.8rem,6.6vw,5.4rem);color:var(--shell);margin-bottom:1.1rem}
+.hero-loc{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--txt-mid);margin-bottom:1rem;font-weight:700}
+.hero h1{font-size:clamp(2.8rem,6.6vw,5.4rem);color:var(--txt);margin-bottom:1.1rem}
+.hero h1 em{color:var(--rose-dk)}
 .hero h1 span{display:block}
-.hero-sub{font-size:clamp(.92rem,1.25vw,1.05rem);color:rgba(255,246,249,.7);max-width:48ch;margin-bottom:1.7rem;line-height:1.72}
-.hero-sub b{color:var(--pink);font-weight:600}
+.hero-sub{font-size:clamp(.92rem,1.25vw,1.05rem);color:var(--txt-mid);max-width:48ch;margin-bottom:1.7rem;line-height:1.72}
+.hero-sub b{color:var(--rose-dk);font-weight:700}
+.hero .btn-o{border-color:rgba(38,34,28,.3);color:var(--txt)}
+.hero .btn-o:hover{border-color:var(--rose);color:var(--rose-dk);background:rgba(255,252,246,.5)}
+.hero-cap{color:var(--txt-lt)!important}
 .hero-btns{display:flex;flex-wrap:wrap;gap:.7rem}
 /* ==========================================================================
    ORBIT — rotating chrome orb with the client's own photographs circling it.
@@ -277,66 +306,107 @@ em{font-style:italic;color:var(--rose)}
   border:1px dashed rgba(223,187,132,.14);
 }
 .sat{
-  position:absolute;top:50%;left:50%;width:76px;height:76px;
+  display:block;                       /* span defaults to inline — kills radius */
+  position:absolute;top:50%;left:50%;width:78px;height:78px;
   transform:
     translate(-50%,-50%)
     rotate(calc(var(--i) * 45deg))
     translateY(calc(var(--r) * -1))
     rotate(calc(var(--i) * -45deg));
 }
+/* thin leader line from each thumbnail back toward the orb, as in the reference */
+.sat::before{
+  content:"";position:absolute;top:50%;left:50%;
+  width:calc(var(--r) - 46px);height:1px;
+  background:linear-gradient(to right,rgba(176,138,87,.55),rgba(176,138,87,0));
+  transform-origin:0 50%;transform:rotate(90deg);
+  pointer-events:none;
+}
 .sat-in{
+  display:block;                       /* ditto */
   width:100%;height:100%;border-radius:50%;overflow:hidden;
-  background:var(--ink2);
-  border:2px solid rgba(223,187,132,.5);
-  box-shadow:0 6px 20px -6px rgba(0,0,0,.65);
+  background:var(--chrome-lt);
+  border:2px solid rgba(255,255,255,.9);
+  box-shadow:0 8px 22px -8px rgba(60,50,35,.55),0 0 0 1px rgba(176,138,87,.35);
   animation:orbit-spin-rev 46s linear infinite;   /* keeps photos upright */
 }
-.sat-in img{width:100%;height:100%;object-fit:cover;display:block}
+.sat-in img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
 
-/* the orb */
+/* ---------- the unit: dark glossy sphere, per the reference ---------- */
 .orb{
-  position:relative;width:47%;aspect-ratio:1/1;border-radius:50%;
+  position:relative;width:48%;aspect-ratio:1/1;border-radius:50%;
   background:
-    radial-gradient(circle at 34% 28%,#F2F5F7 0%,#C8D0D6 16%,#9AA3AA 40%,#5D666D 70%,#333A40 100%);
+    radial-gradient(circle at 32% 24%,
+      #EDF1F4 0%, #AFB8BF 9%, #6E777E 24%,
+      #3A4147 48%, #22272B 72%, #14181B 100%);
   box-shadow:
-    inset -10px -14px 32px rgba(0,0,0,.55),
-    inset 8px 10px 26px rgba(255,255,255,.34),
-    0 22px 50px -18px rgba(0,0,0,.6);
-  overflow:hidden;
+    inset -12px -16px 40px rgba(0,0,0,.75),
+    inset 10px 12px 30px rgba(255,255,255,.30),
+    0 26px 60px -20px rgba(0,0,0,.55),
+    0 0 60px -18px rgba(227,180,120,.45);
+  z-index:2;
 }
-/* rotating banding reads as the sphere physically rolling */
+/* rotating band — reads as the sphere physically rolling */
 .orb::before{
-  content:"";position:absolute;inset:0;border-radius:50%;
+  content:"";position:absolute;inset:0;border-radius:50%;overflow:hidden;
   background:conic-gradient(from 0deg,
-    rgba(255,255,255,.30) 0deg, rgba(255,255,255,0) 42deg,
-    rgba(0,0,0,.24) 96deg, rgba(255,255,255,0) 150deg,
-    rgba(255,255,255,.24) 204deg, rgba(255,255,255,0) 258deg,
-    rgba(0,0,0,.22) 312deg, rgba(255,255,255,.30) 360deg);
+    rgba(255,255,255,.26) 0deg, rgba(255,255,255,0) 40deg,
+    rgba(0,0,0,.30) 95deg, rgba(255,255,255,0) 148deg,
+    rgba(255,255,255,.20) 202deg, rgba(255,255,255,0) 256deg,
+    rgba(0,0,0,.26) 310deg, rgba(255,255,255,.26) 360deg);
   mix-blend-mode:overlay;
   animation:orb-roll 7s linear infinite;
 }
-/* fixed specular highlight so the sphere reads as lit from one side */
+/* fixed specular highlight, so it stays lit from one side while rolling */
 .orb::after{
-  content:"";position:absolute;left:20%;top:14%;width:34%;height:24%;
-  border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.72),transparent 70%);
+  content:"";position:absolute;left:17%;top:11%;width:32%;height:22%;
+  border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.8),transparent 70%);
+  filter:blur(6px);z-index:3;
+}
+/* side vents */
+.orb-vent{
+  position:absolute;top:44%;width:9%;height:15%;border-radius:4px;z-index:3;
+  background:linear-gradient(180deg,#8E979E,#3C4348 55%,#20252A);
+  box-shadow:inset 0 1px 2px rgba(255,255,255,.45),0 2px 6px rgba(0,0,0,.5);
+}
+.orb-vent.l{left:-3%}
+.orb-vent.r{right:-3%}
+/* inset display screen */
+.orb-screen{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:60%;aspect-ratio:1/1;border-radius:50%;z-index:4;
+  background:radial-gradient(circle at 42% 34%,#2C3237,#12161A 70%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 4px 18px rgba(0,0,0,.8),0 0 22px -6px rgba(227,180,120,.5);
+  display:grid;place-items:center;text-align:center;padding:8%;
+  overflow:hidden;
+}
+.orb-screen b{
+  display:block;font-family:var(--ff-d);font-weight:400;color:#fff;
+  font-size:clamp(1.15rem,2.7vw,1.75rem);line-height:1.05;
+  text-shadow:0 2px 10px rgba(0,0,0,.7);
+}
+.orb-screen span{
+  display:block;font-family:var(--ff-s);font-size:.5rem;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:700;color:var(--pink);margin-top:.35rem;
+}
+/* vapour plume and lit plinth beneath */
+.orb-steam{
+  position:absolute;left:50%;bottom:11%;transform:translateX(-50%);
+  width:26%;height:20%;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.6),transparent 72%);
+  filter:blur(9px);animation:steam 5s ease-in-out infinite;
+}
+.orbit-base{
+  position:absolute;bottom:5%;left:50%;transform:translateX(-50%);
+  width:56%;height:16px;border-radius:50%;z-index:0;
+  background:
+    radial-gradient(ellipse,rgba(255,255,255,.85) 0%,rgba(227,180,120,.55) 45%,transparent 72%);
   filter:blur(5px);
 }
-.orb-label{
-  position:absolute;inset:0;display:grid;place-items:center;text-align:center;z-index:3;
-  font-family:var(--ff-d);color:#fff;line-height:1.1;
-  text-shadow:0 2px 12px rgba(0,0,0,.6);padding:1rem;
-}
-.orb-label b{display:block;font-size:clamp(1.5rem,3.6vw,2.3rem);font-weight:400}
-.orb-label span{
-  display:block;font-family:var(--ff-s);font-size:.55rem;letter-spacing:.24em;
-  text-transform:uppercase;font-weight:700;color:var(--pink-lt);margin-top:.4rem;
-}
-/* plinth glow under the orb, echoing the reference */
-.orbit-base{
-  position:absolute;bottom:4%;left:50%;transform:translateX(-50%);
-  width:52%;height:12px;border-radius:50%;
-  background:radial-gradient(ellipse,rgba(223,187,132,.5),transparent 70%);
-  filter:blur(6px);
+@keyframes steam{
+  0%,100%{opacity:.45;transform:translateX(-50%) scaleY(1)}
+  50%    {opacity:.8; transform:translateX(-50%) scaleY(1.18)}
 }
 
 @keyframes orbit-spin{to{transform:rotate(360deg)}}
