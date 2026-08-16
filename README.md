@@ -48,6 +48,35 @@ modern, single-scroll experience.
   The Overlook, Coyote Canyon, Signature at Scottsdale, Villages North, Sunset Cove,
   High Desert Village
 
+## Imagery — authentic only
+
+Every photograph on the site comes from the client's own existing website or their
+Google Business Profile. No stock imagery is used anywhere.
+
+**22 photographs**, each used exactly once, placed in the box its subject matches.
+`logo.jpg` appears three times (nav, host section, footer) as the brand mark.
+
+Three GBP uploads were deliberately **excluded** as unusable:
+
+| File | Why excluded |
+| --- | --- |
+| `photo_004.jpg` | A flyer advertising a different company — "CALL TOM 719-634-7311" (Colorado area code) |
+| `photo_005.jpg` | Unrelated "VacayPrime" stock branding |
+| `streetview_001.jpg` | Google Street View of a dental office storefront |
+
+### Known limitation
+
+The source photographs are small — the sidebar images are 238×138 and the banners
+800×231. Panels use each image's **native aspect ratio**, so nothing is cropped or
+letterboxed, but the images cannot be enlarged much before softening. This is why
+several sections (Areas Served, Who Stays Here) use typographic cards rather than
+photographs, and why the standalone photo gallery was removed — there simply are not
+enough authentic photographs to fill it without repeating.
+
+**Higher-resolution photography from the owner is the single biggest upgrade available
+to this site.** Roughly 25–30 good images would allow the gallery to return and every
+card to carry a photograph.
+
 ## Design rules enforced in this build
 
 - **Pink palette** — Sonoran sunset: deep plum `#26101B`, desert rose `#D94F7A`, blush `#FBE7EE`, shell `#FFF6F9`.

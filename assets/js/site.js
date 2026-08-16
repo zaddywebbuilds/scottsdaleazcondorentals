@@ -100,34 +100,25 @@
     });
   });
 
-  /* ---------- gallery filter ---------- */
-  var galItems = $$('#gal .gi');
-  $$('.gal-f').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var f = btn.getAttribute('data-f');
-      $$('.gal-f').forEach(function (b) { b.classList.remove('on'); });
-      btn.classList.add('on');
-      galItems.forEach(function (i) {
-        i.classList.toggle('hide', !(f === 'all' || i.getAttribute('data-c') === f));
-      });
-    });
-  });
-
-  /* ---------- lightbox ---------- */
+  /* ---------- lightbox: every photograph on the page is enlargeable ---------- */
   var lb = $('#lb'), lbi = $('#lbi'), lbc = $('#lbc'), idx = 0;
-  var vis = function () { return galItems.filter(function (i) { return !i.classList.contains('hide'); }); };
+  // photo panels only — excludes the logo, flag and promo graphic
+  var photos = $$('.ph img').filter(function (im) {
+    return !/logo|flag|promo/.test(im.getAttribute('src') || '');
+  });
+  photos.forEach(function (im) { im.parentNode.style.cursor = 'zoom-in'; });
+
   var show = function (i) {
-    var items = vis(); if (!items.length) return;
-    idx = (i + items.length) % items.length;
-    var it = items[idx], img = $('img', it);
-    var b = $('.gi-cap b', it), s = $('.gi-cap span', it);
-    lbi.src = img.src; lbi.alt = img.alt || '';
-    lbc.textContent = (s ? s.textContent + ' — ' : '') + (b ? b.textContent : '');
+    if (!photos.length) return;
+    idx = (i + photos.length) % photos.length;
+    var im = photos[idx];
+    lbi.src = im.src; lbi.alt = im.alt || '';
+    lbc.textContent = im.alt || '';
   };
   var lbClose = function () { lb.classList.remove('on'); document.body.style.overflow = ''; };
-  galItems.forEach(function (it) {
-    it.addEventListener('click', function () {
-      show(vis().indexOf(it)); lb.classList.add('on'); document.body.style.overflow = 'hidden';
+  photos.forEach(function (im, i) {
+    im.addEventListener('click', function () {
+      show(i); lb.classList.add('on'); document.body.style.overflow = 'hidden';
     });
   });
   if (lb) {

@@ -124,9 +124,41 @@ em{font-style:italic;color:var(--rose)}
   object-position:center;
   transition:transform .8s var(--ease);
 }
-.ph-tall{aspect-ratio:3/4}
-.ph-wide{aspect-ratio:2/1}
-.ph-sq{aspect-ratio:1/1}
+/* native aspect ratios — panel matches the source file exactly, so
+   `contain` neither crops nor letterboxes. */
+.ph-gbp{aspect-ratio:3/2}          /* 960x638, 678x452 */
+.ph-thumb{aspect-ratio:238/138}    /* sidebar photographs */
+.ph-band{aspect-ratio:800/231}     /* wide banner photographs */
+.ph-collage{aspect-ratio:291/564}  /* Kierland photo sheet */
+.ph-map{aspect-ratio:1/1}
+.ph-promo{aspect-ratio:238/168}
+.ph-city{aspect-ratio:442/288}
+.ph-golf{aspect-ratio:458/313}
+/* source photographs are small; never scale them past legibility */
+.ph img{image-rendering:auto}
+
+/* brand mark */
+.brand-row{display:flex;align-items:center;gap:.65rem}
+.brand-mark{width:30px;flex:none;border-radius:2px}
+.foot-mark{width:64px;margin-bottom:.9rem;border-radius:3px}
+
+/* typographic cards (used where no authentic photograph exists) */
+.tcard{
+  background:var(--white);border:1px solid var(--blush2);border-radius:var(--r-lg);
+  padding:1.35rem 1.3rem;transition:.4s var(--ease);position:relative;overflow:hidden;
+}
+.tcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rose);transform:scaleY(0);transform-origin:top;transition:transform .45s var(--ease)}
+.tcard:hover::before{transform:scaleY(1)}
+.tcard:hover{border-color:var(--pink-lt);box-shadow:0 16px 34px -20px rgba(217,79,122,.45);transform:translateY(-3px)}
+.tcard .n{font-size:.6rem;letter-spacing:.2em;font-weight:800;color:var(--pink-lt);display:block;margin-bottom:.7rem}
+.tcard span.k{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:700}
+.tcard b{display:block;font-family:var(--ff-d);font-size:1.42rem;font-weight:400;margin:.25rem 0 .45rem;line-height:1.12}
+.tcard p{font-size:.83rem;color:var(--txt-mid);line-height:1.58}
+.tcard .ic{font-size:1.4rem;display:block;margin-bottom:.7rem}
+.dark .tcard{background:var(--ink2);border-color:var(--ink3)}
+.dark .tcard b{color:var(--shell)}
+.dark .tcard p{color:rgba(255,246,249,.62)}
+.dark .tcard span.k{color:var(--pink)}
 .ph-tag{
   position:absolute;top:.7rem;left:.7rem;z-index:2;
   background:var(--rose);color:#fff;padding:.3rem .75rem;border-radius:100px;
