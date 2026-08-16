@@ -108,6 +108,24 @@ ever scaled up and nothing blurs. Verified: maximum render-to-native ratio acros
 22 photographs is **1.00**. The small originals are presented as mounted prints
 (centred, thin outline, soft shadow) rather than stretched to fill their container.
 
+## WhatsApp — built, currently switched off
+
+WhatsApp contact is fully implemented and **disabled by default**. When enabled it adds
+four touchpoints: a floating action button, a row in the enquiry contact list, a button in
+the mobile bar, and a footer link — all opening `wa.me` with a prefilled message.
+
+**Why it ships disabled.** WhatsApp registration cannot be verified programmatically.
+`wa.me` is only a click-to-chat redirector: it returns an identical page for registered and
+unregistered numbers alike (verified by probing a deliberately fake number, which behaved
+the same as the real one). WhatsApp publishes no public lookup API. Shipping the buttons
+unverified risks sending customers into a dead end.
+
+**To confirm in ten seconds:** open `https://wa.me/14806999915` on a phone with WhatsApp
+installed. If it opens a chat with the business, they are registered.
+
+**To enable:** in `assets/js/site.js`, set `enabled: true` in the `WHATSAPP` object. That
+is the only change required.
+
 ## The booking-activity toast
 
 The sliding notification at bottom-left mirrors the reference site's component — same

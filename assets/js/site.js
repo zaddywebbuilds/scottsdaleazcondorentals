@@ -9,6 +9,60 @@
 
   var yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
 
+  /* ======================================================================
+     WHATSAPP  —  set enabled:true once the number is confirmed on WhatsApp.
+     To confirm: open https://wa.me/14806999915 on a phone that has WhatsApp
+     installed. If it opens a chat with the business, they are registered.
+     wa.me cannot be checked programmatically — it returns the same page for
+     registered and unregistered numbers alike.
+     ====================================================================== */
+  var WHATSAPP = {
+    enabled: false,
+    number : '14806999915',
+    message: 'Hello — I would like to check availability for a furnished rental in Scottsdale.'
+  };
+
+  if (WHATSAPP.enabled) {
+    var waHref = 'https://wa.me/' + WHATSAPP.number + '?text=' + encodeURIComponent(WHATSAPP.message);
+    var waIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.2 5.07 4.48.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35M12.04 21.5h-.01c-1.75 0-3.47-.47-4.97-1.36l-.36-.21-3.7.97.99-3.6-.23-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.9 9.9M20.52 3.45A11.78 11.78 0 0 0 12.04 0C5.46 0 .1 5.35.1 11.93c0 2.1.55 4.15 1.6 5.96L0 24l6.25-1.64a11.9 11.9 0 0 0 5.79 1.47h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.5-8.45"/></svg>';
+
+    // floating action button
+    var fab = document.createElement('a');
+    fab.className = 'wa-fab'; fab.href = waHref;
+    fab.target = '_blank'; fab.rel = 'noopener';
+    fab.setAttribute('aria-label', 'Message us on WhatsApp');
+    fab.innerHTML = waIcon;
+    document.body.appendChild(fab);
+
+    // contact list entry
+    var list = $('.contact-l');
+    if (list) {
+      var row = document.createElement('a');
+      row.href = waHref; row.target = '_blank'; row.rel = 'noopener';
+      row.innerHTML = '<span class="ic">💬</span><span><b>WhatsApp 480-699-9915</b>' +
+                      '<span>Message us directly</span></span>';
+      list.appendChild(row);
+    }
+
+    // mobile bar
+    var bar = $('.mbar');
+    if (bar) {
+      var mb = document.createElement('a');
+      mb.className = 'w'; mb.href = waHref; mb.target = '_blank'; mb.rel = 'noopener';
+      mb.textContent = 'WhatsApp';
+      bar.appendChild(mb);
+    }
+
+    // footer link
+    var fl = $('.foot-brand .foot-links');
+    if (fl) {
+      var f = document.createElement('a');
+      f.href = waHref; f.target = '_blank'; f.rel = 'noopener';
+      f.textContent = '💬 WhatsApp 480-699-9915';
+      fl.appendChild(f);
+    }
+  }
+
   /* ---------- ticker loop ---------- */
   var ticker = $('#ticker');
   if (ticker && !reduced) ticker.innerHTML += ticker.innerHTML;

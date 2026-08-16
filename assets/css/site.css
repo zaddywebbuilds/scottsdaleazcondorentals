@@ -684,6 +684,46 @@ form .btn{width:100%;margin-top:.4rem}
 .foot-bar .creds{color:var(--pink)}
 
 /* ==========================================================================
+   Accessibility
+   ========================================================================== */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:4000;
+  background:var(--rose);color:#fff;padding:.8rem 1.4rem;border-radius:0 0 6px 0;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+}
+.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:2px}
+.dark :focus-visible,.hero :focus-visible{outline-color:var(--pink)}
+
+/* ==========================================================================
+   WhatsApp (rendered only when enabled in site.js)
+   ========================================================================== */
+.wa-fab{
+  position:fixed;right:1.2rem;bottom:1.6rem;z-index:1799;
+  width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+  background:#25D366;box-shadow:0 10px 28px -8px rgba(37,211,102,.7);
+  transition:transform .3s var(--ease);
+}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:28px;height:28px;fill:#fff}
+@media(max-width:680px){.wa-fab{bottom:5.2rem;right:.8rem;width:48px;height:48px}}
+.mbar .w{background:#25D366;color:#fff}
+
+/* ==========================================================================
+   Print — guests print property details
+   ========================================================================== */
+@media print{
+  .ticker,.nav,.mnav,.mbar,#sp-toast,.pp,.lb,.wa-fab,.orbit,.band,form,.scroll-cue{display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  .sec{padding-block:.6rem;break-inside:avoid}
+  .dark,.blush,.shell,.statbar,.hero{background:#fff!important;color:#000!important}
+  .dark h2,.dark h3,.dark .lead{color:#000!important}
+  a[href^="tel"]::after,a[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt}
+  .card,.area,.rev{border:1px solid #ccc;break-inside:avoid}
+  .panel{display:block!important}
+}
+
+/* ==========================================================================
    Availability toast
    ========================================================================== */
 #sp-toast{
