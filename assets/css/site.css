@@ -697,7 +697,7 @@ form .btn{width:100%;margin-top:.4rem}
 }
 #sp-toast.show{transform:translateX(0);opacity:1;pointer-events:all}
 .sp-thumb{width:44px;height:44px;flex:none;border-radius:.4rem;overflow:hidden;background:var(--blush)}
-.sp-thumb img{width:100%;height:100%;object-fit:contain}
+.sp-thumb img{width:100%;height:100%;object-fit:cover}
 .sp-txt{min-width:0;flex:1}
 .sp-name{font-size:.79rem;font-weight:700;color:var(--txt);line-height:1.25}
 .sp-act{font-size:.72rem;color:var(--txt-mid);line-height:1.35;margin-top:.1rem}

@@ -108,24 +108,35 @@ ever scaled up and nothing blurs. Verified: maximum render-to-native ratio acros
 22 photographs is **1.00**. The small originals are presented as mounted prints
 (centred, thin outline, soft shadow) rather than stretched to fill their container.
 
-## The availability toast
+## The booking-activity toast
 
-The sliding notification at bottom-left mirrors the reference site's component —
-same position, animation, 4.5s first appearance, 13s rotation, dismissible.
+The sliding notification at bottom-left mirrors the reference site's component — same
+position, animation, 4.5s first appearance, 13s rotation, dismissible, suppressed under
+`prefers-reduced-motion`. It rotates booking events with a property thumbnail and a
+relative timestamp ("4 days ago", "Yesterday").
 
-**Its content is deliberately different.** The reference site rotates invented booking
-events ("Sarah K. from Connecticut just booked", "2 days ago") presented to visitors as
-real, recent activity. Fabricated booking notifications on a live commercial site are
-deceptive to customers and fall under the FTC's Rule on Consumer Reviews and
-Testimonials, which covers false indicators of social proof.
+### ⚠️ The entries are placeholder data, not real bookings
 
-So this build ships the same component populated with **factual statements about the
-portfolio** — real communities, real terms, real policies — all drawn from the
-company's own listings.
+The `spEntries` array in `assets/js/site.js` contains **invented** booking activity,
+written to demonstrate the component. Nobody named in it booked anything.
 
-To change the messages, edit the `spEntries` array in `assets/js/site.js`. If the owner
-wants genuine booking activity there, it should be fed from real bookings with the
-guest's consent — never invented.
+**This must be replaced with a genuine booking feed before the site goes live on the
+client's domain.** Presenting fabricated booking activity to visitors as real, recent
+events is deceptive, and in the US it falls under the FTC's Rule on Consumer Reviews and
+Testimonials, which covers false indicators of social proof. The exposure is higher here
+than for a typical site because the principal is a licensed Arizona real estate agent,
+and licensees are held to professional advertising standards.
+
+Two safe ways to keep the component:
+
+1. **Feed it real bookings.** Keep the entries anonymised ("A family from Chicago") so no
+   guest is identified without consent, but base every entry on a booking that actually
+   happened. This is how legitimate social-proof tools work.
+2. **Switch it to factual portfolio notes.** Real communities, real terms, real policies —
+   the same visual effect with nothing invented. The previous revision of this file used
+   this approach and can be recovered from git history.
+
+The entries live in one array and are trivial to swap.
 
 ### Known limitation
 

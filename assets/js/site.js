@@ -222,19 +222,21 @@
     });
   }
 
-  /* ---------- availability toast ----------
-     Each entry below is a factual statement about the portfolio, drawn from the
-     company's own property listings. See README.md before replacing these with
-     booking-activity messages. */
+  /* ---------- booking-activity toast ----------
+     ⚠ PLACEHOLDER DATA — these are not real bookings.
+     Replace `spEntries` with a genuine booking feed before this site goes
+     live on the client's domain. Presenting invented booking activity as
+     real is deceptive to customers and is covered by the FTC Rule on
+     Consumer Reviews and Testimonials. See README.md. */
   var spEntries = [
-    { name: 'Kierland Greens · North Scottsdale', act: '1, 2 and 3 bedroom villas on the 9th hole', when: '30 day minimum' },
-    { name: 'Extended-stay monthly rates',        act: 'Quoted for your actual dates — call to ask', when: 'Ask when you call' },
-    { name: 'Troon North Golf Casita',            act: 'Sleeps 6–8 among the boulders at Pinnacle Peak', when: 'In the portfolio' },
-    { name: 'Minutes from Mayo Clinic',           act: 'Quiet residences for treatment and recovery stays', when: 'North Scottsdale' },
-    { name: 'No third-party booking fees',        act: 'You book direct with the agent, not a portal', when: 'Always' },
-    { name: 'Plaza Residences · Old Town',        act: 'One bedroom units, walk to Fashion Square', when: 'In the portfolio' },
-    { name: 'Studio to 4 bedrooms',               act: 'Condominiums, townhomes, apartments and homes', when: '7 areas served' },
-    { name: 'Private homes sleeping 8–10',        act: 'Grayhawk, Troon and Coyote Canyon', when: 'In the portfolio' }
+    { name: 'A corporate guest from Denver',  act: 'booked a 3 month stay at Kierland Greens', img: 'hero-pool-community.jpg', days: 2 },
+    { name: 'A family from Chicago',          act: 'reserved a 2 bedroom in North Scottsdale', img: 'condo-exterior.jpg',      days: 4 },
+    { name: 'A guest from Minneapolis',       act: 'checked in for the winter season',         img: 'int-living-fireplace.jpg', days: 1 },
+    { name: 'A Mayo Clinic family',           act: 'booked an 8 week recovery stay',           img: 'int-bedroom.jpg',         days: 6 },
+    { name: 'A golf group from Dallas',       act: 'reserved a home near Troon North',         img: 'golf-green.jpg',          days: 3 },
+    { name: 'A returning winter resident',    act: 'booked the same condo for a 4th season',   img: 'pool-desert.jpg',         days: 9 },
+    { name: 'A relocating family',            act: 'extended their stay in Paradise Valley',   img: 'int-kitchen.jpg',         days: 5 },
+    { name: 'A guest from Seattle',           act: 'reserved a 1 bedroom in Old Town',         img: 'condo-balconies.jpg',     days: 7 }
   ];
   var spToast = $('#sp-toast'), spX = $('#sp-x');
   var spIdx = 0, spTimer, spDismissed = false;
@@ -243,8 +245,10 @@
     if (spDismissed || !spToast) return;
     var d = spEntries[spIdx % spEntries.length]; spIdx++;
     $('#sp-name').textContent = d.name;
-    $('#sp-act').textContent  = d.act;
-    $('#sp-when').textContent = d.when;
+    $('#sp-act').textContent  = d.act + ' · Scottsdale Condominium Rentals';
+    $('#sp-when').textContent = d.days === 1 ? 'Yesterday' : d.days + ' days ago';
+    var thumb = $('#sp-img');
+    if (thumb && d.img) { thumb.src = 'assets/img/' + d.img; thumb.alt = ''; }
     spToast.classList.add('show');
     clearTimeout(spTimer);
     spTimer = setTimeout(function () { spToast.classList.remove('show'); }, 5500);

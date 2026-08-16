@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=50">
+<link rel="stylesheet" href="assets/css/site.css?v=60">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"RealEstateAgent",
@@ -758,12 +758,13 @@
   <a href="#enquire" class="b js-pop">Check Availability</a>
 </div>
 
-<!-- ═══ AVAILABILITY TOAST ═══
-     Rotating factual availability notes. See README before swapping these
-     for booking-activity messages.
-     ═══════════════════════════ -->
+<!-- ═══ BOOKING ACTIVITY TOAST ═══
+     ⚠ The entries in assets/js/site.js are PLACEHOLDER data, not real
+     bookings. Replace them with a genuine booking feed before this goes
+     live on the client's domain. See README.md.
+     ═══════════════════════════════ -->
 <div id="sp-toast" aria-live="polite">
-  <div class="sp-thumb"><img src="assets/img/logo.jpg" alt=""></div>
+  <div class="sp-thumb"><img id="sp-img" src="assets/img/hero-pool-community.jpg" alt=""></div>
   <div class="sp-txt">
     <div class="sp-name" id="sp-name"></div>
     <div class="sp-act" id="sp-act"></div>
@@ -817,6 +818,6 @@
   </div>
 </div>
 
-<script src="assets/js/site.js?v=50"></script>
+<script src="assets/js/site.js?v=60"></script>
 </body>
 </html>
