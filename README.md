@@ -64,6 +64,32 @@ Three GBP uploads were deliberately **excluded** as unusable:
 | `photo_005.jpg` | Unrelated "VacayPrime" stock branding |
 | `streetview_001.jpg` | Google Street View of a dental office storefront |
 
+### Sharpness
+
+Every photo panel is capped at the source file's **true pixel width**, so no image is
+ever scaled up and nothing blurs. Verified: maximum render-to-native ratio across all
+22 photographs is **1.00**. The small originals are presented as mounted prints
+(centred, thin outline, soft shadow) rather than stretched to fill their container.
+
+## The availability toast
+
+The sliding notification at bottom-left mirrors the reference site's component —
+same position, animation, 4.5s first appearance, 13s rotation, dismissible.
+
+**Its content is deliberately different.** The reference site rotates invented booking
+events ("Sarah K. from Connecticut just booked", "2 days ago") presented to visitors as
+real, recent activity. Fabricated booking notifications on a live commercial site are
+deceptive to customers and fall under the FTC's Rule on Consumer Reviews and
+Testimonials, which covers false indicators of social proof.
+
+So this build ships the same component populated with **factual statements about the
+portfolio** — real communities, real terms, real policies — all drawn from the
+company's own listings.
+
+To change the messages, edit the `spEntries` array in `assets/js/site.js`. If the owner
+wants genuine booking activity there, it should be fed from real bookings with the
+guest's consent — never invented.
+
 ### Known limitation
 
 The source photographs are small — the sidebar images are 238×138 and the banners

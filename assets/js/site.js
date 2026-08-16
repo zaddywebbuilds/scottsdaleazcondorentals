@@ -222,6 +222,42 @@
     });
   }
 
+  /* ---------- availability toast ----------
+     Each entry below is a factual statement about the portfolio, drawn from the
+     company's own property listings. See README.md before replacing these with
+     booking-activity messages. */
+  var spEntries = [
+    { name: 'Kierland Greens · North Scottsdale', act: '1, 2 and 3 bedroom villas on the 9th hole', when: '30 day minimum' },
+    { name: 'Extended-stay monthly rates',        act: 'Quoted for your actual dates — call to ask', when: 'Ask when you call' },
+    { name: 'Troon North Golf Casita',            act: 'Sleeps 6–8 among the boulders at Pinnacle Peak', when: 'In the portfolio' },
+    { name: 'Minutes from Mayo Clinic',           act: 'Quiet residences for treatment and recovery stays', when: 'North Scottsdale' },
+    { name: 'No third-party booking fees',        act: 'You book direct with the agent, not a portal', when: 'Always' },
+    { name: 'Plaza Residences · Old Town',        act: 'One bedroom units, walk to Fashion Square', when: 'In the portfolio' },
+    { name: 'Studio to 4 bedrooms',               act: 'Condominiums, townhomes, apartments and homes', when: '7 areas served' },
+    { name: 'Private homes sleeping 8–10',        act: 'Grayhawk, Troon and Coyote Canyon', when: 'In the portfolio' }
+  ];
+  var spToast = $('#sp-toast'), spX = $('#sp-x');
+  var spIdx = 0, spTimer, spDismissed = false;
+
+  var showToast = function () {
+    if (spDismissed || !spToast) return;
+    var d = spEntries[spIdx % spEntries.length]; spIdx++;
+    $('#sp-name').textContent = d.name;
+    $('#sp-act').textContent  = d.act;
+    $('#sp-when').textContent = d.when;
+    spToast.classList.add('show');
+    clearTimeout(spTimer);
+    spTimer = setTimeout(function () { spToast.classList.remove('show'); }, 5500);
+  };
+  if (spX) {
+    spX.addEventListener('click', function () {
+      spToast.classList.remove('show'); clearTimeout(spTimer); spDismissed = true;
+    });
+  }
+  if (spToast && !reduced) {
+    setTimeout(function () { showToast(); setInterval(showToast, 13000); }, 4500);
+  }
+
   /* ---------- anchor offset ---------- */
   $$('a[href^="#"]').forEach(function (a) {
     if (a.classList.contains('js-pop')) return;

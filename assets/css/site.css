@@ -77,8 +77,8 @@ em{font-style:italic;color:var(--rose)}
 
 /* ---------- layout : zero dead space ---------- */
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
-.sec{padding-block:clamp(3rem,5.5vw,4.6rem)}
-.sec-t{padding-block:clamp(2rem,3.5vw,3rem)}
+.sec{padding-block:clamp(1.7rem,2.8vw,2.5rem)}
+.sec-t{padding-block:clamp(1.2rem,2vw,1.7rem)}
 .shell{background:var(--shell)}
 .blush{background:var(--blush)}
 .dark{background:var(--ink);color:var(--shell)}
@@ -86,7 +86,7 @@ em{font-style:italic;color:var(--rose)}
 .rose{background:var(--rose);color:#fff}
 .rose h2{color:#fff}
 
-.head{max-width:720px;margin-bottom:clamp(1.8rem,3.5vw,2.8rem)}
+.head{max-width:720px;margin-bottom:clamp(1.1rem,2vw,1.6rem)}
 .head.c{margin-inline:auto;text-align:center}
 .head.c .eyebrow{justify-content:center}
 .head.c .eyebrow::before{display:none}
@@ -124,18 +124,28 @@ em{font-style:italic;color:var(--rose)}
   object-position:center;
   transition:transform .8s var(--ease);
 }
-/* native aspect ratios — panel matches the source file exactly, so
-   `contain` neither crops nor letterboxes. */
-.ph-gbp{aspect-ratio:3/2}          /* 960x638, 678x452 */
-.ph-thumb{aspect-ratio:238/138}    /* sidebar photographs */
-.ph-band{aspect-ratio:800/231}     /* wide banner photographs */
-.ph-collage{aspect-ratio:291/564}  /* Kierland photo sheet */
-.ph-map{aspect-ratio:1/1}
-.ph-promo{aspect-ratio:238/168}
-.ph-city{aspect-ratio:442/288}
-.ph-golf{aspect-ratio:458/313}
-/* source photographs are small; never scale them past legibility */
-.ph img{image-rendering:auto}
+/* Native aspect ratio AND native max-width per source file.
+   The client's photographs are small originals; capping each panel at the
+   file's true pixel width means nothing is ever upscaled, so nothing blurs. */
+.ph{margin-inline:auto}
+.ph-hero{aspect-ratio:960/638;max-width:960px}
+.ph-ext{aspect-ratio:678/452;max-width:678px}
+.ph-golf{aspect-ratio:458/313;max-width:458px}
+.ph-city{aspect-ratio:442/288;max-width:442px}
+.ph-band{aspect-ratio:800/231;max-width:800px}
+.ph-thumb{aspect-ratio:238/138;max-width:238px}
+.ph-collage{aspect-ratio:291/564;max-width:291px}
+.ph-map{aspect-ratio:229/229;max-width:229px}
+.ph-promo{aspect-ratio:238/168;max-width:238px}
+
+/* small originals are presented as mounted prints rather than stretched fills */
+.card .ph,.zig .ph{
+  box-shadow:0 2px 10px -4px rgba(42,18,31,.3);
+  outline:1px solid rgba(42,18,31,.07);outline-offset:-1px;
+}
+.card.ink .ph{outline-color:rgba(255,246,249,.09)}
+.ph-mount{padding:.7rem;background:var(--blush)}
+.dark .ph-mount{background:var(--ink3)}
 
 /* brand mark */
 .brand-row{display:flex;align-items:center;gap:.65rem}
@@ -298,9 +308,9 @@ em{font-style:italic;color:var(--rose)}
 /* ==========================================================================
    Cards — photo on top (uncropped), text below
    ========================================================================== */
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
-.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem}
 
 .card{
   background:var(--white);border:1px solid var(--blush2);border-radius:var(--r-lg);
@@ -494,6 +504,31 @@ form .btn{width:100%;margin-top:.4rem}
 .foot h4{font-family:var(--ff-s);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);font-weight:800;margin-bottom:.9rem}
 .foot-bar{border-top:1px solid var(--ink3);padding-block:1.3rem;display:flex;justify-content:space-between;gap:.8rem;flex-wrap:wrap;font-size:.72rem;color:rgba(255,246,249,.4)}
 .foot-bar .creds{color:var(--pink)}
+
+/* ==========================================================================
+   Availability toast
+   ========================================================================== */
+#sp-toast{
+  position:fixed;bottom:1.5rem;left:1.5rem;z-index:1800;width:300px;
+  background:var(--white);border-radius:.6rem;padding:.8rem .95rem;
+  display:flex;align-items:center;gap:.8rem;
+  box-shadow:0 12px 40px -12px rgba(42,18,31,.4);
+  border-left:3px solid var(--rose);
+  transform:translateX(-130%);opacity:0;pointer-events:none;
+  transition:transform .5s cubic-bezier(.22,.68,0,1.1),opacity .4s;
+}
+#sp-toast.show{transform:translateX(0);opacity:1;pointer-events:all}
+.sp-thumb{width:44px;height:44px;flex:none;border-radius:.4rem;overflow:hidden;background:var(--blush)}
+.sp-thumb img{width:100%;height:100%;object-fit:contain}
+.sp-txt{min-width:0;flex:1}
+.sp-name{font-size:.79rem;font-weight:700;color:var(--txt);line-height:1.25}
+.sp-act{font-size:.72rem;color:var(--txt-mid);line-height:1.35;margin-top:.1rem}
+.sp-when{font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--rose);font-weight:700;margin-top:.25rem}
+#sp-x{flex:none;align-self:flex-start;font-size:.8rem;color:var(--txt-lt);line-height:1;padding:.1rem;transition:color .2s}
+#sp-x:hover{color:var(--rose)}
+@media(max-width:680px){
+  #sp-toast{bottom:5rem;left:.6rem;right:.6rem;width:auto}
+}
 
 .mbar{position:fixed;bottom:0;left:0;right:0;z-index:998;display:none;background:rgba(38,16,27,.97);backdrop-filter:blur(14px);border-top:1px solid var(--ink3);padding:.6rem;gap:.5rem}
 .mbar a{flex:1;text-align:center;padding:.8rem;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;border-radius:100px}

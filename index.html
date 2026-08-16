@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=20">
+<link rel="stylesheet" href="assets/css/site.css?v=30">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"RealEstateAgent",
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="hero-photo rv rv-d2">
-      <div class="ph ph-gbp"><img src="assets/img/hero-pool-community.jpg" alt="Resort pool and condominium buildings with desert mountains beyond, Scottsdale Condominium Rentals" fetchpriority="high"></div>
+      <div class="ph ph-hero"><img src="assets/img/hero-pool-community.jpg" alt="Resort pool and condominium buildings with desert mountains beyond, Scottsdale Condominium Rentals" fetchpriority="high"></div>
       <p class="hero-cap">Our community pool · Scottsdale, Arizona</p>
     </div>
   </div>
@@ -176,7 +176,7 @@
           <li>Hiking at Pinnacle Peak, Tom's Thumb and Camelback nearby</li>
         </ul>
       </div>
-      <div class="ph ph-gbp"><img src="assets/img/condo-exterior.jpg" alt="Condominium exterior with mature desert landscaping in morning light" loading="lazy"></div>
+      <div class="ph ph-ext"><img src="assets/img/condo-exterior.jpg" alt="Condominium exterior with mature desert landscaping in morning light" loading="lazy"></div>
     </div></div>
 
     <div class="panel" id="d2"><div class="panel-grid">
@@ -552,7 +552,7 @@
         <p class="panel-meta">Kierland Greens</p>
         <h3>15221 N. Clubgate Dr.</h3>
         <p class="lead lt" style="margin-top:.8rem">Our Kierland Greens villas sit along the 9th hole of the Kierland Golf Course, a short walk from Kierland Commons and a few minutes from Mayo Clinic Scottsdale.</p>
-        <div class="ph ph-map" style="max-width:240px;margin-top:1.1rem"><img src="assets/img/kierland-map.jpg" alt="Locator map of the Kierland area of North Scottsdale" loading="lazy"></div>
+        <div class="ph ph-map" style="margin-top:1.1rem;margin-inline:0"><img src="assets/img/kierland-map.jpg" alt="Locator map of the Kierland area of North Scottsdale" loading="lazy"></div>
       </div>
     </div>
 
@@ -733,6 +733,20 @@
   <a href="#enquire" class="b js-pop">Check Availability</a>
 </div>
 
+<!-- ═══ AVAILABILITY TOAST ═══
+     Rotating factual availability notes. See README before swapping these
+     for booking-activity messages.
+     ═══════════════════════════ -->
+<div id="sp-toast" aria-live="polite">
+  <div class="sp-thumb"><img src="assets/img/logo.jpg" alt=""></div>
+  <div class="sp-txt">
+    <div class="sp-name" id="sp-name"></div>
+    <div class="sp-act" id="sp-act"></div>
+    <div class="sp-when" id="sp-when"></div>
+  </div>
+  <button id="sp-x" aria-label="Dismiss">&#10005;</button>
+</div>
+
 <div class="lb" id="lb">
   <button class="lb-x" id="lbx" aria-label="Close">&times;</button>
   <button class="lb-nav lb-prev" id="lbp" aria-label="Previous">&#8249;</button>
@@ -778,6 +792,6 @@
   </div>
 </div>
 
-<script src="assets/js/site.js?v=20"></script>
+<script src="assets/js/site.js?v=30"></script>
 </body>
 </html>
